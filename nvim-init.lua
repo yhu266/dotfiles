@@ -8,7 +8,7 @@ require'packer'.startup(function(use)
   use 'b3nj5m1n/kommentary'
   use {'JoosepAlviste/nvim-ts-context-commentstring', requires = {'nvim-treesitter/nvim-treesitter'}}
   use 'norcalli/snippets.nvim'
-  use {'nvim-lua/completion-nvim', requires = {'steelsojka/completion-buffers'}}
+  use {'nvim-lua/completion-nvim', requires = {'steelsojka/completion-buffers', 'kristijanhusak/completion-tags'}}
   use 'Pocco81/AutoSave.nvim'
   -- navigation
   use 'karb94/neoscroll.nvim'
@@ -72,6 +72,7 @@ local completion_on_attach = function()
     chain_complete_list = {
       default = {
         {complete_items = {'lsp'}},
+        {complete_items = {'tags'}},
         {complete_items = {'snippet'}},
         {complete_items = {'buffers'}},
         {complete_items = {'path'}, triggered_only = {'/'}},
