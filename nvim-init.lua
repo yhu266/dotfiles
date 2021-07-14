@@ -233,6 +233,7 @@ map.n['<RIGHT>'] = '<NOP>'
 map.n['j'] = 'gj'
 map.n['k'] = 'gk'
 map.n.nore['<LEADER><SPACE>'] = '<CMD>nohlsearch<CR>'
+map.n.nore['<LEADER>z'] = 'zt'
 map.n.nore['<LEADER>w'] = '<CMD>w!<CR>'
 map.n.nore['<LEADER>q'] = '<CMD>q<CR>'
 
