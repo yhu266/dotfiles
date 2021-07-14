@@ -71,7 +71,9 @@ local completion_on_attach = function()
     enable_snippet = 'snippets.nvim',
     chain_complete_list = {
       default = {
-        {complete_items = {'lsp', 'snippet', 'buffers'}},
+        {complete_items = {'lsp'}},
+        {complete_items = {'snippet'}},
+        {complete_items = {'buffers'}},
         {complete_items = {'path'}, triggered_only = {'/'}},
         {mode = {'<c-p>'}},
         {mode = {'<c-n>'}},
