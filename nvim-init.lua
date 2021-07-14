@@ -224,17 +224,17 @@ require'nvim-treesitter.configs'.setup {
 -- yhu266/nvim-extra
 
 -- key mappings
-vim.api.nvim_set_keymap('', '<space>', '<leader>', {})
-vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<up>', '<nop>', {})
-vim.api.nvim_set_keymap('n', '<down>', '<nop>', {})
-vim.api.nvim_set_keymap('n', '<left>', '<nop>', {})
-vim.api.nvim_set_keymap('n', '<right>', '<nop>', {})
-vim.api.nvim_set_keymap('n', 'j', 'gj', {})
-vim.api.nvim_set_keymap('n', 'k', 'gk', {})
-vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>nohlsearch<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>w', '<cmd>w!<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>q!<cr>', {noremap = true})
+map['<SPACE>'] = '<LEADER>'
+map.i.nore['jk'] = '<ESC>'
+map.n['<UP>'] = '<NOP>'
+map.n['<DOWN>'] = '<NOP>'
+map.n['<LEFT>'] = '<NOP>'
+map.n['<RIGHT>'] = '<NOP>'
+map.n['j'] = 'gj'
+map.n['k'] = 'gk'
+map.n.nore['<LEADER><SPACE>'] = '<CMD>nohlsearch<CR>'
+map.n.nore['<LEADER>w'] = '<CMD>w!<CR>'
+map.n.nore['<LEADER>q'] = '<CMD>q<CR>'
 
 -- editing
 vim.opt.fileignorecase = true
