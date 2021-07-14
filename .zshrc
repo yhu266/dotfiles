@@ -24,7 +24,6 @@ add-zsh-hook chpwd _print_git_status
 alias bk='cd -'
 alias bup='brew upgrade'
 alias cl='clear'
-alias ct='ctest'
 alias l='clear; ls -AG'
 alias ll='clear; ls -AGhl'
 alias matlab='matlab -nosplash -nodesktop'
