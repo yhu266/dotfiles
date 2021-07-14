@@ -1,0 +1,7 @@
+.tabbrowser-tab .tab-close-button {
+  visibility: collapse !important;
+}
+
+#tabs-newtab-button {
+  visibility: hidden !important;
+}
