@@ -13,6 +13,7 @@ require'packer'.startup(function(use)
   -- navigation
   use 'karb94/neoscroll.nvim'
   use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}
+  use 'kevinhwang91/nvim-hlslens'
   use 'ggandor/lightspeed.nvim'
   use 'nacro90/numb.nvim'
   -- UI
@@ -112,6 +113,41 @@ map.n.nore['<LEADER>ff'] = '<CMD>lua require("telescope.builtin").find_files({fi
 map.n.nore['<LEADER>fg'] = '<CMD>lua require("telescope.builtin").live_grep()<CR>'
 map.n.nore['<LEADER>fb'] = '<CMD>lua require("telescope.builtin").buffers()<CR>'
 map.n.nore['<LEADER>fh'] = '<CMD>lua require("telescope.builtin").help_tags()<CR>'
+
+-- kevinhwang91/nvim-hlslens
+require('hlslens').setup {
+  override_lens = function(render, plist, nearest, idx, r_idx)
+    local sfw = vim.v.searchforward == 1
+    local indicator, text, chunks
+    local abs_r_idx = math.abs(r_idx)
+    if abs_r_idx > 1 then
+      indicator = ('%d%s'):format(abs_r_idx, sfw ~= (r_idx > 1) and 'N' or 'n')
+    elseif abs_r_idx == 1 then
+      indicator = sfw ~= (r_idx == 1) and 'N' or 'n'
+    else
+      indicator = ''
+    end
+
+    local lnum, col = unpack(plist[idx])
+    if nearest then
+      if indicator ~= '' then
+        text = ('[%s]'):format(indicator)
+      else
+        text = ('[%d]'):format(idx)
+      end
+      chunks = {{' ', 'Ignore'}, {text, 'HlSearchLensNear'}}
+    else
+      text = ('[%s]'):format(indicator)
+      chunks = {{' ', 'Ignore'}, {text, 'HlSearchLens'}}
+    end
+    render.set_virt(0, lnum - 1, col - 1, chunks, nearest)
+  end
+}
+map.nore.silent['n'] = '<CMD>execute("normal! ".v:count1."n")<CR><CMD>lua require("hlslens").start()<CR>'
+map.nore.silent['N'] = '<CMD>execute("normal! ".v:count1."N")<CR><CMD>lua require("hlslens").start()<CR>'
+map.nore['*'] = '*<CMD>lua require("hlslens").start()<CR>'
+map.nore['#'] = '#<CMD>lua require("hlslens").start()<CR>'
+vim.cmd('hi default link HlSearchLens IncSearch')
 
 -- ggandor/lightspeed.nvim
 require'lightspeed'.setup {
