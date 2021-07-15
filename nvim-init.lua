@@ -200,7 +200,7 @@ require'lualine'.setup {
 
 -- norcalli/nvim-colorizer.lua
 require'colorizer'.setup{
-  'tmux';
+  tmux = {mode = 'background'},
 }
 
 -- lewis6991/gitsigns.nvim
