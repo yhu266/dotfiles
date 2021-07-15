@@ -20,6 +20,7 @@ require'packer'.startup(function(use)
   use {'haringsrob/nvim_context_vt', requires = {'nvim-treesitter/nvim-treesitter'}}
   use 'RRethy/nvim-base16'
   use 'hoob3rt/lualine.nvim'
+  use 'norcalli/nvim-colorizer.lua'
   -- git
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
   -- LSP & AST
@@ -195,6 +196,11 @@ require'lualine'.setup {
   extensions = {
     'quickfix',
   },
+}
+
+-- norcalli/nvim-colorizer.lua
+require'colorizer'.setup{
+  'tmux';
 }
 
 -- lewis6991/gitsigns.nvim
