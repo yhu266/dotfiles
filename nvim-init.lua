@@ -35,7 +35,7 @@ end)
 local map = require'cartographer'
 
 -- lewis6991/spellsitter.nvim
-require('spellsitter').setup {
+require('spellsitter').setup{
   hl = 'SpellBad',
   captures = {'comment'},
 }
@@ -64,7 +64,7 @@ require'snippets'.snippets = {
 
 -- nvim-lua/completion-nvim
 local completion_on_attach = function()
-  require'completion'.on_attach({
+  require'completion'.on_attach{
     sorting = 'length',
     matching_strategy_list = {'exact', 'substring', 'fuzzy'},
     matching_ignore_case = 1,
@@ -83,22 +83,23 @@ local completion_on_attach = function()
       },
       comment = {},
     },
-  })
+  }
 end
 map.i.nore.expr['<S-TAB>'] = 'pumvisible() ? "\\<C-p>" : "\\<TAB>"'
 map.i.nore.expr['<TAB>'] = 'pumvisible() ? "\\<C-n>" : "\\<TAB>"'
 
 -- Pocco81/AutoSave.nvim
-require'autosave'.setup {
+require'autosave'.setup{
   execution_message = 'saved at '..vim.fn.strftime("%H:%M:%S"),
   events = {'InsertLeave'},
 }
 
 -- karb94/neoscroll.nvim
-require'neoscroll'.setup {}
+require'neoscroll'.setup{
+}
 
 -- nvim-telescope/telescope.nvim
-require'telescope'.setup {
+require'telescope'.setup{
   defaults = {
     borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
     layout_strategy = 'vertical',
@@ -116,7 +117,7 @@ map.n.nore['<LEADER>fb'] = '<CMD>lua require("telescope.builtin").buffers()<CR>'
 map.n.nore['<LEADER>fh'] = '<CMD>lua require("telescope.builtin").help_tags()<CR>'
 
 -- kevinhwang91/nvim-hlslens
-require('hlslens').setup {
+require('hlslens').setup{
   override_lens = function(render, plist, nearest, idx, r_idx)
     local sfw = vim.v.searchforward == 1
     local indicator, text, chunks
@@ -151,24 +152,25 @@ map.nore['#'] = '#<CMD>lua require("hlslens").start()<CR>'
 vim.cmd('hi default link HlSearchLens IncSearch')
 
 -- ggandor/lightspeed.nvim
-require'lightspeed'.setup {
+require'lightspeed'.setup{
   jump_to_first_match = false,
   limit_ft_matches = 7,
 }
 
 -- nacro90/numb.nvim
-require'numb'.setup {
+require'numb'.setup{
   number_only = true,
 }
 
 -- haringsrob/nvim_context_vt
-require'nvim_context_vt'.setup {}
+require'nvim_context_vt'.setup{
+}
 
 -- RRethy/nvim-base16
 vim.cmd('colorscheme base16-solarized-dark')
 
 -- hoob3rt/lualine.nvim
-require'lualine'.setup {
+require'lualine'.setup{
   options = {
     icons_enabled = false,
     theme = 'solarized_dark',
@@ -204,7 +206,7 @@ require'colorizer'.setup{
 }
 
 -- lewis6991/gitsigns.nvim
-require('gitsigns').setup {
+require('gitsigns').setup{
   signs = {
     add = {text = 'A'},
     change = {text = 'C'},
@@ -222,8 +224,8 @@ local sumneko_binary = sumneko_root_path..'/bin/macOS/lua-language-server'
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
-require'lspconfig'.sumneko_lua.setup {
-  cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
+require'lspconfig'.sumneko_lua.setup{
+  cmd = {sumneko_binary, '-E', sumneko_root_path..'/main.lua'},
   on_attach = completion_on_attach,
   settings = {
     Lua = {
@@ -234,12 +236,12 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
-require'lspconfig'.clangd.setup {
+require'lspconfig'.clangd.setup{
   cmd = {'/usr/local/opt/llvm/bin/clangd'},
   on_attach = completion_on_attach,
   filetypes = {'c', 'cpp'},
 }
-require'lspconfig'.texlab.setup {
+require'lspconfig'.texlab.setup{
   on_attach = completion_on_attach,
   settings = {
     texlab = {
@@ -251,7 +253,7 @@ require'lspconfig'.texlab.setup {
 }
 
 -- nvim-treesitter/nvim-treesitter
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup{
   ensure_installed = {'c', 'cmake', 'latex', 'lua'},
   highlight = {
     enable = true,
